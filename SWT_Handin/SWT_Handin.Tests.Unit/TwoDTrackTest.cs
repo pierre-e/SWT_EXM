@@ -20,24 +20,21 @@ namespace SWT_Handin.Tests.Unit
         [Test]
         public void PropertySpeed_SetAndGet_True()
         {
-            TwoDTrack testTrack = new TwoDTrack();
-            testTrack.Speed = 100;
+            var testTrack = new TwoDTrack {Speed = 100};
             Assert.AreEqual(100, testTrack.Speed);
         }
         [Test]
         public void PropertyTag_SetAndGet_True()
         {
-            TwoDTrack testTrack = new TwoDTrack();
-            testTrack.Tag = "TestTag!";
+            var testTrack = new TwoDTrack {Tag = "TestTag!"};
             Assert.AreEqual("TestTag!", testTrack.Tag);
         }
 
         [Test]
         public void PropertyPosition_SetAndGet_True()
         {
-            var position = Substitute.For<TwoDPosition>();
-            var testTrack = new TwoDTrack();
-            testTrack.Position = position;
+            var position = Substitute.For<IPosition>();
+            var testTrack = new TwoDTrack {Position = position};
             Assert.AreEqual(position, testTrack.Position);
         }
     } //end TwoDTrackTest

@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F70E8042-6ECF-4D37-A247-BC335EAA3DC8}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{D3E74C9C-AE03-4B78-89D2-E22D0B2559C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SWT_Handin</RootNamespace>
-    <AssemblyName>SWT_Handin</AssemblyName>
+    <RootNamespace>SWT_Handin.Tests.Unit</RootNamespace>
+    <AssemblyName>SWT_Handin.Tests.Unit</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,10 +29,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,28 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TwoDPosition.cs" />
-    <Compile Include="TwoDTrack.cs" />
-    <Compile Include="TwoDTrackFactory.cs" />
-    <Compile Include="ATC.cs" />
-    <Compile Include="ConsolLog.cs" />
-    <Compile Include="Direction.cs" />
-    <Compile Include="EventHandling\Event.cs" />
-    <Compile Include="EventHandling\EventAtDestination.cs" />
-    <Compile Include="EventDetector.cs" />
-    <Compile Include="EventHandling\EventMidAirCol.cs" />
-    <Compile Include="EventHandling\EventNearMiss.cs" />
-    <Compile Include="FileRenderer.cs" />
-    <Compile Include="Ilog.cs" />
-    <Compile Include="IPosition.cs" />
-    <Compile Include="IRenderer.cs" />
-    <Compile Include="ITrack.cs" />
-    <Compile Include="ITrackFactor.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="ATCTest.cs" />
+    <Compile Include="ConsolLogTest.cs" />
+    <Compile Include="EventAtDestinationTest.cs" />
+    <Compile Include="EventDetectorTest.cs" />
+    <Compile Include="EventMidAirColTest.cs" />
+    <Compile Include="EventNearMissTest.cs" />
+    <Compile Include="FileRendererTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwoDPositionTest.cs" />
+    <Compile Include="TwoDTrackFactoryTest.cs" />
+    <Compile Include="TwoDTrackTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\SWT_Handin\SWT_Handin.csproj">
+      <Project>{28610e98-5082-4941-9259-35c76d8c41bb}</Project>
+      <Name>SWT_Handin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
