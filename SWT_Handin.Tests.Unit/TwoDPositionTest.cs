@@ -14,19 +14,6 @@ namespace SWT_Handin.Tests.Unit
     [TestFixture]
     public class TwoDPositionTest
     {
-        [SetUp]
-        protected void SetUp()
-        {
-        }
 
-        [Test]
-        public void TestTwoDPosition()
-        {
-        }
-
-        [Test]
-        public void TestTwoDPositiondoubledouble()
-        {
-        }
     } //end TwoDPositionTest
 } //end namespace UnitTests

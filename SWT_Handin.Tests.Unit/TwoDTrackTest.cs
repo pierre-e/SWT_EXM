@@ -24,7 +24,7 @@ namespace SWT_Handin.Tests.Unit
             testTrack.Speed = 100;
             Assert.AreEqual(100, testTrack.Speed);
         }
-
+        [Test]
         public void PropertyTag_SetAndGet_True()
         {
             TwoDTrack testTrack = new TwoDTrack();
@@ -32,6 +32,7 @@ namespace SWT_Handin.Tests.Unit
             Assert.AreEqual("TestTag!", testTrack.Tag);
         }
 
+        [Test]
         public void PropertyPosition_SetAndGet_True()
         {
             var position = Substitute.For<TwoDPosition>();
