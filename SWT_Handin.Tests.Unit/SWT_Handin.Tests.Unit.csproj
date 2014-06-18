@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SWT_Handin.Tests.Unit</RootNamespace>
-    <AssemblyName>SWT Handin.Tests.Unit</AssemblyName>
+    <AssemblyName>SWT_Handin.Tests.Unit</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
