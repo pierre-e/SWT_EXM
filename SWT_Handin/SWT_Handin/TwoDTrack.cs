@@ -11,9 +11,11 @@ namespace SWT_Handin
 {
     public class TwoDTrack : ITrack
     {
+        public string Tag { get; set; }
+        public int Speed { get; set; }
         public IPosition Position { get; set; }
         public Direction TrackDirection { get; set; }
-        public int Speed { get; set; }
-        public string Tag { get; set; }
+        
+        
     } //end TwoDTrack
 } //end namespace Implementation

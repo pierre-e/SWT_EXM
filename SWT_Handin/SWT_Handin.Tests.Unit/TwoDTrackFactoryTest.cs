@@ -14,14 +14,30 @@ namespace SWT_Handin.Tests.Unit
     [TestFixture]
     public class TwoDTrackFactoryTest
     {
-        [SetUp]
-        protected void SetUp()
-        {
-        }
-
         [Test]
-        public void TestCreateTrack()
+        public void CreateTrack_CorrectTag_Valid()
         {
+            var track = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(1, 2), Direction.North);
+            Assert.AreEqual("Test", track.Tag);
+        }
+        [Test]
+        public void CreateTrack_CorrectSpeed_Valid()
+        {
+            var track = new TwoDTrackFactory().CreateTrack("test", 80, new TwoDPosition(1, 2), Direction.North);
+            Assert.AreEqual(80, track.Speed);
+        }
+        [Test]
+        public void CreateTrack_CorrectPosition_Valid()
+        {
+            var pos = new TwoDPosition(1, 2);
+            var track = new TwoDTrackFactory().CreateTrack("test", 80, pos, Direction.North);
+            Assert.AreEqual(pos, track.Position);
+        }
+        [Test]
+        public void CreateTrack_CorrectDirection_Valid()
+        {
+            var track = new TwoDTrackFactory().CreateTrack("test", 80, new TwoDPosition(1, 2), Direction.North);
+            Assert.AreEqual(Direction.North, track.TrackDirection);
         }
     } //end TwoDTrackFactoryTest
 } //end namespace UnitTests

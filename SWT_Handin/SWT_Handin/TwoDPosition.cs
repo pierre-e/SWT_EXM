@@ -31,16 +31,5 @@ namespace SWT_Handin
                 }
                 _coordinates = value;
             } }
-
-        public void SetX(double x)
-        {
-            Coordinates[0] = x;
-        }
-
-        public void SetY(double y)
-        {
-            Coordinates[1] = y;
-        }
-
     } //end TwoDPosition
 } //end namespace Implementation
