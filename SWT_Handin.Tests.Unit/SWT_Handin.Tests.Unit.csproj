@@ -61,9 +61,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SWT Handin\SWT Handin.csproj">
+    <ProjectReference Include="..\SWT Handin\SWT_Handin.csproj">
       <Project>{f70e8042-6ecf-4d37-a247-bc335eaa3dc8}</Project>
-      <Name>SWT Handin</Name>
+      <Name>SWT_Handin</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
