@@ -10,14 +10,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace SWT_Handin {
-	public interface ILog  {
-
-		/// 
-		/// <param name="events"></param>
-		void Log(List<Tuple<ITrack,ITrack>> events);
-	}
+namespace SWT_Handin
+{
+    public interface ILog
+    {
+        /// <param name="events"></param>
+        void Log(List<Tuple<ITrack, ITrack>> events);
+    }
 
 //end Ilog
-
-}//end namespace Implementation
+} //end namespace Implementation

@@ -9,43 +9,34 @@
 
 using NUnit.Framework;
 
-namespace SWT_Handin.Tests.Unit {
-	[TestFixture]
-	public class ATCTest {
+namespace SWT_Handin.Tests.Unit
+{
+    [TestFixture]
+    public class ATCTest
+    {
+        [SetUp]
+        protected void SetUp()
+        {
+        }
 
-		public ATCTest(){
+        [Test]
+        public void TestAcceptIncomingTrack()
+        {
+        }
 
-		}
+        [Test]
+        public void TestHandOff()
+        {
+        }
 
-		~ATCTest(){
+        [Test]
+        public void TestTick()
+        {
+        }
 
-		}
-
-		[SetUp]
-		protected void SetUp(){
-
-		}
-
-		[Test]
-		public void testATC(){
-
-		}
-
-		[Test]
-		public void testAcceptIncomingTrack(){
-
-		}
-
-		[Test]
-		public void testHandOff(){
-
-		}
-
-		[Test]
-		public void testTick(){
-
-		}
-
-	}//end ATCTest
-
-}//end namespace UnitTests
+        [Test]
+        public void testATC()
+        {
+        }
+    } //end ATCTest
+} //end namespace UnitTests

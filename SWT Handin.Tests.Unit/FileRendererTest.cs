@@ -9,33 +9,24 @@
 
 using NUnit.Framework;
 
-namespace SWT_Handin.Tests.Unit {
-	[TestFixture]
-	public class FileRendererTest {
+namespace SWT_Handin.Tests.Unit
+{
+    [TestFixture]
+    public class FileRendererTest
+    {
+        [SetUp]
+        protected void SetUp()
+        {
+        }
 
-		public FileRendererTest(){
+        [Test]
+        public void TestFileRenderer()
+        {
+        }
 
-		}
-
-		~FileRendererTest(){
-
-		}
-
-		[SetUp]
-		protected void SetUp(){
-
-		}
-
-		[Test]
-		public void testFileRenderer(){
-
-		}
-
-		[Test]
-		public void testRenderTracks(){
-
-		}
-
-	}//end FileRendererTest
-
-}//end namespace UnitTests
+        [Test]
+        public void TestRenderTracks()
+        {
+        }
+    } //end FileRendererTest
+} //end namespace UnitTests

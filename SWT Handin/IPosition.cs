@@ -9,11 +9,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 
-namespace SWT_Handin {
-	public interface IPosition  {
-        List<Double> Coordinates{ get;  set;} 
-	}//end IPosition
-
-}//end namespace Implementation
+namespace SWT_Handin
+{
+    public interface IPosition
+    {
+        List<Double> Coordinates { get; set; }
+    } //end IPosition
+} //end namespace Implementation

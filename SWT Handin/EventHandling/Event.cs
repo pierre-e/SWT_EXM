@@ -11,12 +11,9 @@ using System;
 
 namespace SWT_Handin.EventHandling
 {
-        public abstract class Event
-        {
-            /// 
-            /// <param name="tracks"></param>
-            public abstract bool CheckEventCond(Tuple<ITrack, ITrack> tracks);
-
-        }
-    
-}//end Event
+    public abstract class Event
+    {
+        /// <param name="tracks"></param>
+        public abstract bool CheckEventCond(Tuple<ITrack, ITrack> tracks);
+    }
+} //end Event

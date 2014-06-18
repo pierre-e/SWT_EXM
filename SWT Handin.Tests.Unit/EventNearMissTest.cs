@@ -9,28 +9,19 @@
 
 using NUnit.Framework;
 
-namespace SWT_Handin.Tests.Unit {
-	[TestFixture]
-	public class EventNearMissTest {
+namespace SWT_Handin.Tests.Unit
+{
+    [TestFixture]
+    public class EventNearMissTest
+    {
+        [SetUp]
+        protected void SetUp()
+        {
+        }
 
-		public EventNearMissTest(){
-
-		}
-
-		~EventNearMissTest(){
-
-		}
-
-		[SetUp]
-		protected void SetUp(){
-
-		}
-
-		[Test]
-		public void testCheckEventCond(){
-
-		}
-
-	}//end EventNearMissTest
-
-}//end namespace UnitTests
+        [Test]
+        public void TestCheckEventCond()
+        {
+        }
+    } //end EventNearMissTest
+} //end namespace UnitTests

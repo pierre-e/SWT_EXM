@@ -7,37 +7,26 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
 using NUnit.Framework;
-using SWT_Handin;
-namespace ATC.ATC.UnitTests {
-	[TestFixture]
-	public class ConsolLogTest {
 
-		public ConsolLogTest(){
+namespace SWT_Handin.Tests.Unit
+{
+    [TestFixture]
+    public class ConsolLogTest
+    {
+        [SetUp]
+        protected void SetUp()
+        {
+        }
 
-		}
+        [Test]
+        public void TestConsolLog()
+        {
+        }
 
-		~ConsolLogTest(){
-
-		}
-
-		[SetUp]
-		protected void SetUp(){
-
-		}
-
-		[Test]
-		public void testConsolLog(){
-
-		}
-
-		[Test]
-		public void testLog(){
-
-		}
-
-	}//end ConsolLogTest
-
-}//end namespace UnitTests
+        [Test]
+        public void TestLog()
+        {
+        }
+    } //end ConsolLogTest
+} //end namespace UnitTests

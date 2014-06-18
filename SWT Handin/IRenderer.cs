@@ -10,12 +10,11 @@
 using System.Collections.Generic;
 using SWT_Handin;
 
-namespace ATC.Implementation {
-	public interface IRenderer  {
-
-		/// 
-		/// <param name="tracks"></param>
-		void RenderTracks(List<ITrack> tracks);
-	}//end IRenderer
-
-}//end namespace Implementation
+namespace ATC.Implementation
+{
+    public interface IRenderer
+    {
+        /// <param name="tracks"></param>
+        void RenderTracks(List<ITrack> tracks);
+    } //end IRenderer
+} //end namespace Implementation

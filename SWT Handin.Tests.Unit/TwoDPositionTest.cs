@@ -9,30 +9,24 @@
 
 using NUnit.Framework;
 
-namespace SWT_Handin.Tests.Unit {
-	[TestFixture]
-	public class TwoDPositionTest {
+namespace SWT_Handin.Tests.Unit
+{
+    [TestFixture]
+    public class TwoDPositionTest
+    {
+        [SetUp]
+        protected void SetUp()
+        {
+        }
 
-		public TwoDPositionTest(){
+        [Test]
+        public void TestTwoDPosition()
+        {
+        }
 
-		}
-
-
-		[SetUp]
-		protected void SetUp(){
-
-		}
-
-		[Test]
-		public void TestTwoDPosition(){
-
-		}
-
-		[Test]
-		public void TestTwoDPositiondoubledouble(){
-
-		}
-
-	}//end TwoDPositionTest
-
-}//end namespace UnitTests
+        [Test]
+        public void TestTwoDPositiondoubledouble()
+        {
+        }
+    } //end TwoDPositionTest
+} //end namespace UnitTests

@@ -7,17 +7,14 @@
 ///////////////////////////////////////////////////////////
 
 
-using SWT_Handin;
-
-namespace SWT_Handin{
-	public interface ITrackFactor  {
-
-		/// 
-		/// <param name="tag"></param>
-		/// <param name="speed"></param>
-		/// <param name="pos"></param>
-		/// <param name="direction"></param>
-		ITrack CreateTrack(string tag, int speed, IPosition pos, Direction direction);
-	}//end ITrackFactor
-
-}//end namespace Implementation
+namespace SWT_Handin
+{
+    public interface ITrackFactor
+    {
+        /// <param name="tag"></param>
+        /// <param name="speed"></param>
+        /// <param name="pos"></param>
+        /// <param name="direction"></param>
+        ITrack CreateTrack(string tag, int speed, IPosition pos, Direction direction);
+    } //end ITrackFactor
+} //end namespace Implementation

@@ -9,23 +9,21 @@
 
 using System;
 using System.Collections.Generic;
-namespace SWT_Handin {
-	public class TwoDPosition : IPosition {
 
-		public List<Double> Coordinates{ get;  set;} 
-		
+namespace SWT_Handin
+{
+    public class TwoDPosition : IPosition
+    {
+        public TwoDPosition()
+        {
+        }
 
-		public TwoDPosition(){
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public TwoDPosition(double x, double y)
+        {
+        }
 
-		}
-
-		/// 
-		/// <param name="x"></param>
-		/// <param name="y"></param>
-		public TwoDPosition(double x, double y){
-
-		}
-
-	}//end TwoDPosition
-
-}//end namespace Implementation
+        public List<Double> Coordinates { get; set; }
+    } //end TwoDPosition
+} //end namespace Implementation

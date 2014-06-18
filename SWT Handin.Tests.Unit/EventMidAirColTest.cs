@@ -9,28 +9,19 @@
 
 using NUnit.Framework;
 
-namespace SWT_Handin.Tests.Unit {
-	[TestFixture]
-	public class EventMidAirColTest {
+namespace SWT_Handin.Tests.Unit
+{
+    [TestFixture]
+    public class EventMidAirColTest
+    {
+        [SetUp]
+        protected void SetUp()
+        {
+        }
 
-		public EventMidAirColTest(){
-
-		}
-
-		~EventMidAirColTest(){
-
-		}
-
-		[SetUp]
-		protected void SetUp(){
-
-		}
-
-		[Test]
-		public void testCheckEventCond(){
-
-		}
-
-	}//end EventMidAirColTest
-
-}//end namespace UnitTests
+        [Test]
+        public void TestCheckEventCond()
+        {
+        }
+    } //end EventMidAirColTest
+} //end namespace UnitTests

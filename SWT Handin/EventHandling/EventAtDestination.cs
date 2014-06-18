@@ -11,18 +11,12 @@ using System;
 
 namespace SWT_Handin.EventHandling
 {
-    public class EventAtDestination : Event {
-
-        public EventAtDestination(){
-
-        }
-
-        /// 
+    public class EventAtDestination : Event
+    {
         /// <param name="tracks"></param>
-        public override bool CheckEventCond(Tuple<ITrack, ITrack> tracks){
-
+        public override bool CheckEventCond(Tuple<ITrack, ITrack> tracks)
+        {
             return false;
         }
-
     }
-}//end EventAtDestination
+} //end EventAtDestination

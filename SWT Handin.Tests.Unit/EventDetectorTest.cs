@@ -9,28 +9,19 @@
 
 using NUnit.Framework;
 
-namespace SWT_Handin.Tests.Unit {
-	[TestFixture]
-	public class EventDetectorTest {
+namespace SWT_Handin.Tests.Unit
+{
+    [TestFixture]
+    public class EventDetectorTest
+    {
+        [SetUp]
+        protected void SetUp()
+        {
+        }
 
-		public EventDetectorTest(){
-
-		}
-
-		~EventDetectorTest(){
-
-		}
-
-		[SetUp]
-		protected void SetUp(){
-
-		}
-
-		[Test]
-		public void testDetectEvents(){
-
-		}
-
-	}//end EventDetectorTest
-
-}//end namespace UnitTests
+        [Test]
+        public void TestDetectEvents()
+        {
+        }
+    } //end EventDetectorTest
+} //end namespace UnitTests

@@ -11,22 +11,12 @@ using System;
 
 namespace SWT_Handin.EventHandling
 {
-    public class EventMidAirCol : Event {
-
-        public EventMidAirCol(){
-
-        }
-
-        ~EventMidAirCol(){
-
-        }
-
-        /// 
+    public class EventMidAirCol : Event
+    {
         /// <param name="tracks"></param>
-        public override bool CheckEventCond(Tuple<ITrack, ITrack> tracks){
-
+        public override bool CheckEventCond(Tuple<ITrack, ITrack> tracks)
+        {
             return false;
         }
-
     }
-}//end EventMidAirCol
+} //end EventMidAirCol

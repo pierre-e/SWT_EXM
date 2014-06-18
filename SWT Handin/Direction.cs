@@ -7,16 +7,13 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
-namespace SWT_Handin {
-	public enum Direction : int {
-
-		North,
-		South,
-		East,
-		West
-
-	}//end Direction
-
-}//end namespace Implementation
+namespace SWT_Handin
+{
+    public enum Direction
+    {
+        North,
+        South,
+        East,
+        West
+    } //end Direction
+} //end namespace Implementation

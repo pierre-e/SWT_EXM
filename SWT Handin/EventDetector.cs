@@ -11,18 +11,11 @@ using System;
 using System.Collections.Generic;
 using SWT_Handin;
 
-public class EventDetector {
-
-	public EventDetector(){
-
-	}
-
-
-	/// 
-	/// <param name="tracks"></param>
-	public List<Tuple<ITrack,ITrack>> DetectEvents(List<ITrack> tracks){
-
-		return null;
-	}
-
-}//end EventDetector
+public class EventDetector
+{
+    /// <param name="tracks"></param>
+    public List<Tuple<ITrack, ITrack>> DetectEvents(List<ITrack> tracks)
+    {
+        return null;
+    }
+} //end EventDetector

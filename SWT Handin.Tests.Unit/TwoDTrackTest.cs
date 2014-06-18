@@ -9,25 +9,19 @@
 
 using NUnit.Framework;
 
-namespace SWT_Handin.Tests.Unit {
-	[TestFixture]
-	public class TwoDTrackTest {
+namespace SWT_Handin.Tests.Unit
+{
+    [TestFixture]
+    public class TwoDTrackTest
+    {
+        [SetUp]
+        protected void SetUp()
+        {
+        }
 
-		public TwoDTrackTest(){
-
-		}
-
-
-		[SetUp]
-		protected void SetUp(){
-
-		}
-
-		[Test]
-		public void testTwoDTrack(){
-
-		}
-
-	}//end TwoDTrackTest
-
-}//end namespace UnitTests
+        [Test]
+        public void TestTwoDTrack()
+        {
+        }
+    } //end TwoDTrackTest
+} //end namespace UnitTests

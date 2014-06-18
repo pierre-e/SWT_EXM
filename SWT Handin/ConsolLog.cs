@@ -9,29 +9,14 @@
 
 using System;
 using System.Collections.Generic;
-using ATC.Implementation;
-using SWT_Handin;
 
-namespace SWT_Handin {
-	public class ConsolLog : ILog {
-
-
-
-		~ConsolLog(){
-
-		}
-
-		public ConsolLog(){
-
-		}
-
-		/// 
-		/// <param name="event"></param>
+namespace SWT_Handin
+{
+    public class ConsolLog : ILog
+    {
+        /// <param name="event"></param>
         public void Log(List<Tuple<ITrack, ITrack>> events)
         {
-
-		}
-
-	}//end ConsolLog
-
-}//end namespace Implementation
+        }
+    } //end ConsolLog
+} //end namespace Implementation

@@ -9,13 +9,13 @@
 
 using System;
 
-namespace SWT_Handin {
-	public interface ITrack
-	{
-	    Direction TrackDirection { get; set; }
+namespace SWT_Handin
+{
+    public interface ITrack
+    {
+        Direction TrackDirection { get; set; }
         int Speed { get; set; }
         IPosition Position { get; set; }
         String Tag { get; set; }
-	}//end ITrack
-
-}//end namespace Implementation
+    } //end ITrack
+} //end namespace Implementation
