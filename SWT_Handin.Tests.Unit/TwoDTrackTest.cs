@@ -36,11 +36,9 @@ namespace SWT_Handin.Tests.Unit
         public void PropertyPosition_SetAndGet_True()
         {
             var position = Substitute.For<TwoDPosition>();
-            var coordinates = new List<double> {20.345, 70.234};
-            position.Coordinates = coordinates;
             var testTrack = new TwoDTrack();
             testTrack.Position = position;
-            Assert.AreEqual(coordinates, testTrack.Position);
+            Assert.AreEqual(position, testTrack.Position);
         }
     } //end TwoDTrackTest
 } //end namespace UnitTests
