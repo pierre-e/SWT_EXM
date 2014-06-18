@@ -37,8 +37,7 @@ namespace SWT_Handin.Tests.Unit
         {
             var position = Substitute.For<TwoDPosition>();
             var coordinates = new List<double> {20.345, 70.234};
-            position.Coordinates.Returns(coordinates);
-
+            position.Coordinates = coordinates;
             var testTrack = new TwoDTrack();
             testTrack.Position = position;
             Assert.AreEqual(coordinates, testTrack.Position);
