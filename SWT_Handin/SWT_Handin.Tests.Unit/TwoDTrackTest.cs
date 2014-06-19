@@ -7,8 +7,11 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
+using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
+using System.Threading;
 
 namespace SWT_Handin.Tests.Unit
 {
@@ -35,6 +38,55 @@ namespace SWT_Handin.Tests.Unit
         {
             var testTrack = new TwoDTrack {Tag = "TestTag!"};
             Assert.AreEqual("TestTag!", testTrack.Tag);
+        }
+
+        [Test]
+        public void Tick_MoveTrackNorth_True()
+        {
+            var posSub = Substitute.For<IPosition>();
+            posSub.Coordinates = new List<double>();
+            posSub.Coordinates.Add(0);
+            posSub.Coordinates.Add(5000);
+            var track = new TwoDTrackFactory().CreateTrack("Test", 100, posSub, Direction.North);
+            Thread.Sleep(1000);
+            track.Tick(1000);
+            Assert.True(5000 > track.Position.Coordinates[1]);
+        }
+        [Test]
+        public void Tick_MoveTrackSouth_True()
+        {
+            var posSub = Substitute.For<IPosition>();
+            posSub.Coordinates = new List<double>();
+            posSub.Coordinates.Add(0);
+            posSub.Coordinates.Add(5000);
+            var track = new TwoDTrackFactory().CreateTrack("Test", 100, posSub, Direction.South);
+            Thread.Sleep(1000);
+            track.Tick(1000);
+            Assert.True(5000 < track.Position.Coordinates[1]);
+        }
+        [Test]
+        public void Tick_MoveTrackWest_True()
+        {
+            var posSub = Substitute.For<IPosition>();
+            posSub.Coordinates = new List<double>();
+            posSub.Coordinates.Add(5000);
+            posSub.Coordinates.Add(0);
+            var track = new TwoDTrackFactory().CreateTrack("Test", 100, posSub, Direction.West);
+            Thread.Sleep(1000);
+            track.Tick(1000);
+            Assert.True(5000 > track.Position.Coordinates[0]);
+        }
+        [Test]
+        public void Tick_MoveTrackEast_True()
+        {
+            var posSub = Substitute.For<IPosition>();
+            posSub.Coordinates = new List<double>();
+            posSub.Coordinates.Add(5000);
+            posSub.Coordinates.Add(0);
+            var track = new TwoDTrackFactory().CreateTrack("Test", 100, posSub, Direction.East);
+            Thread.Sleep(1000);
+            track.Tick(1000);
+            Assert.True(5000 < track.Position.Coordinates[0]);
         }
     } //end TwoDTrackTest
 } //end namespace UnitTests

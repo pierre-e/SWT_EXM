@@ -7,6 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
 using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
@@ -34,6 +35,23 @@ namespace SWT_Handin.Tests.Unit
             myHappening.AttachToAtc(atc);
             List<EventMessage> eventlist = myHappening.CheckEventConditionsAndHandle(tracklist);
             Assert.IsTrue(eventlist.Count > 0);
+        }
+        [Test]
+        [ExpectedException(typeof(Exception))]
+        public void CheckEventCond_Invalid()
+        {
+            var atc = Substitute.For<ATC>();
+            var posSub1 = Substitute.For<IPosition>();
+            posSub1.Coordinates = new List<double> { 0, 100, 500 };
+            var posSub2 = Substitute.For<IPosition>();
+            posSub2.Coordinates = new List<double> { 0, 100 };
+
+            ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, posSub1, Direction.East);
+            ITrack t2 = new TwoDTrackFactory().CreateTrack("Test", 80, posSub2, Direction.East);
+            var tracklist = new List<ITrack> { t1, t2 };
+            var myHappening = new EventMidAirCol();
+            myHappening.AttachToAtc(atc);
+            List<EventMessage> check = myHappening.CheckEventConditionsAndHandle(tracklist);
         }
     } //end EventNearMissTest
 } //end namespace UnitTests

@@ -26,7 +26,6 @@ namespace SWT_Handin.Tests.Unit
             var trackList = new List<ITrack> { subTrack1, subTrack2 };
             var subEvent = Substitute.For<IEvent>();
             var subEventMessage = Substitute.For<EventMessage>(trackList, subEvent.GetType());
-            //subEventMessage.Timestamp.ReturnsForAnyArgs(date);
             subTrack1.Tag.Returns("Track1");
             subTrack2.Tag.Returns("Track2");
 

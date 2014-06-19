@@ -19,5 +19,6 @@ namespace SWT_Handin
         String Tag { get; set; }
 
         void Tick(int tickTime);
+
     } //end ITrack
 } //end namespace Implementation
