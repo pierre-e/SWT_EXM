@@ -7,9 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
-using System;
 using System.Collections.Generic;
-using SWT_Handin;
 
 namespace SWT_Handin
 {
@@ -22,33 +20,32 @@ namespace SWT_Handin
             _atc = airTrafficControl;
         }
 
-        public bool CheckEventConditions(List<ITrack> tracks)
+        public List<EventMessage> CheckEventConditions(List<ITrack> tracks)
         {
-            var affectedTracks = new List<ITrack>();
-            foreach (var track in tracks)
+            var affectedTracks = new List<EventMessage>();
+            foreach (ITrack track in tracks)
             {
-                if (track.Position.Coordinates[1] >= _atc.AreaWidth && track.TrackDirection == Direction.South)
+                if (track.Position.Coordinates[1] >= _atc.AreaHeight && track.TrackDirection == Direction.South)
                 {
-                    affectedTracks.Add(track);
+                    affectedTracks.Add(new EventMessage(new List<ITrack> {track}, GetType()));
                 }
-                if (track.Position.Coordinates[0] >= _atc.AreaHeight && track.TrackDirection == Direction.East)
+                if (track.Position.Coordinates[0] >= _atc.AreaWidth && track.TrackDirection == Direction.East)
                 {
-                    affectedTracks.Add(track);
+                    affectedTracks.Add(new EventMessage(new List<ITrack> {track}, GetType()));
                 }
 
                 if (track.Position.Coordinates[1] <= 0 && track.TrackDirection == Direction.North)
                 {
-                    affectedTracks.Add(track);
+                    affectedTracks.Add(new EventMessage(new List<ITrack> {track}, GetType()));
                 }
                 if (track.Position.Coordinates[0] <= 0 && track.TrackDirection == Direction.West)
                 {
-                    affectedTracks.Add(track);
+                    affectedTracks.Add(new EventMessage(new List<ITrack> {track}, GetType()));
                 }
             }
-            if (affectedTracks.Count == 0)
-                return false;
+
             HandleEvent(affectedTracks);
-            return true;
+            return affectedTracks;
         }
 
         public void HookToDetector()
@@ -56,12 +53,12 @@ namespace SWT_Handin
             EventHandler.EventList.Add(this);
         }
 
-        private void HandleEvent(List<ITrack> tracks)
+        private void HandleEvent(List<EventMessage> tracks)
         {
-            foreach (var track in tracks)
+            foreach (EventMessage track in tracks)
             {
-                _atc.HandOff(track);
-                _atc.Log.Log(new List<ITrack>() {track}, "Track at destination, handing off");
+                _atc.HandOff(track.InvolvedTracks[0]);
+                _atc.Log.Log(new List<ITrack> {track.InvolvedTracks[0]}, "Track at destination, handing off");
             }
         }
     }

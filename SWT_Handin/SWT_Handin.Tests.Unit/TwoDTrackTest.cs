@@ -7,8 +7,6 @@
 ///////////////////////////////////////////////////////////
 
 
-using System;
-using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -18,24 +16,25 @@ namespace SWT_Handin.Tests.Unit
     public class TwoDTrackTest
     {
         [Test]
-        public void PropertySpeed_SetAndGet_True()
-        {
-            var testTrack = new TwoDTrack {Speed = 100};
-            Assert.AreEqual(100, testTrack.Speed);
-        }
-        [Test]
-        public void PropertyTag_SetAndGet_True()
-        {
-            var testTrack = new TwoDTrack {Tag = "TestTag!"};
-            Assert.AreEqual("TestTag!", testTrack.Tag);
-        }
-
-        [Test]
         public void PropertyPosition_SetAndGet_True()
         {
             var position = Substitute.For<IPosition>();
             var testTrack = new TwoDTrack {Position = position};
             Assert.AreEqual(position, testTrack.Position);
+        }
+
+        [Test]
+        public void PropertySpeed_SetAndGet_True()
+        {
+            var testTrack = new TwoDTrack {Speed = 100};
+            Assert.AreEqual(100, testTrack.Speed);
+        }
+
+        [Test]
+        public void PropertyTag_SetAndGet_True()
+        {
+            var testTrack = new TwoDTrack {Tag = "TestTag!"};
+            Assert.AreEqual("TestTag!", testTrack.Tag);
         }
     } //end TwoDTrackTest
 } //end namespace UnitTests

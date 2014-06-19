@@ -19,8 +19,8 @@ namespace SWT_Handin.Tests.Unit
         [Test]
         public void PropertyCoordinates_SetAndGet_True()
         {
-            var testPosition = new TwoDPosition(20.134,15.2);
-            var coords = new List<double> { 1.2, 2.3 };
+            var testPosition = new TwoDPosition(20.134, 15.2);
+            var coords = new List<double> {1.2, 2.3};
             testPosition.Coordinates = coords;
             Assert.AreEqual(coords, testPosition.Coordinates);
         }
@@ -30,7 +30,7 @@ namespace SWT_Handin.Tests.Unit
         public void PropertyCoordinates_Set_WrongDimension()
         {
             var testPosition = new TwoDPosition(20.134, 15.2);
-            var coords = new List<double> { 1.2, 2.3 ,2.6};
+            var coords = new List<double> {1.2, 2.3, 2.6};
             testPosition.Coordinates = coords;
         }
     } //end TwoDPositionTest

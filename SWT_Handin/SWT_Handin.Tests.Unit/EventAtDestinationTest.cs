@@ -7,11 +7,8 @@
 ///////////////////////////////////////////////////////////
 
 
-using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using NSubstitute;
-using NSubstitute.Exceptions;
 using NUnit.Framework;
 
 namespace SWT_Handin.Tests.Unit
@@ -20,54 +17,58 @@ namespace SWT_Handin.Tests.Unit
     public class EventAtDestinationTest
     {
         [Test]
-        public void HookToDetector_Succes()
-        {
-            var myHappening = new EventAtDestination();
-            myHappening.HookToDetector();
-            Assert.True(EventHandler.EventList[EventHandler.EventList.Count-1] is EventAtDestination);
-        }
-        [Test]
         public void DetectEvent_Handof_East_Valid()
         {
-            var atc = Substitute.For<ATC>();            
+            var atc = Substitute.For<ATC>();
             var myHappening = new EventAtDestination();
             myHappening.AttachToAtc(ref atc);
-            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(10000, 50), Direction.East);
-            bool check = myHappening.CheckEventConditions(new List<ITrack>{t1});
-            Assert.AreEqual(true, check);
+            ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(100000, 50), Direction.East);
+            List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
+            Assert.True(check.Count > 0);
         }
-        [Test]
-        public void DetectEvent_Handof_West_Valid()
-        {
-            var atc = Substitute.For<ATC>(); 
-            var myHappening = new EventAtDestination();
-            myHappening.AttachToAtc(ref atc);
-            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(0, 50), Direction.West);
-            myHappening.CheckEventConditions(new List<ITrack> { t1 });
-            bool check = myHappening.CheckEventConditions(new List<ITrack> { t1 });
-            Assert.AreEqual(true, check);
-        }
+
         [Test]
         public void DetectEvent_Handof_North_Valid()
         {
-            var atc = Substitute.For<ATC>(); 
+            var atc = Substitute.For<ATC>();
             var myHappening = new EventAtDestination();
             myHappening.AttachToAtc(ref atc);
-            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 0), Direction.North);
-            myHappening.CheckEventConditions(new List<ITrack> { t1 });
-            bool check = myHappening.CheckEventConditions(new List<ITrack> { t1 });
-            Assert.AreEqual(true, check);
+            ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 0), Direction.North);
+            myHappening.CheckEventConditions(new List<ITrack> {t1});
+            List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
+            Assert.True(check.Count > 0);
         }
+
         [Test]
         public void DetectEvent_Handof_South_Valid()
         {
             var atc = Substitute.For<ATC>();
             var myHappening = new EventAtDestination();
             myHappening.AttachToAtc(ref atc);
-            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 100000), Direction.South);
-            myHappening.CheckEventConditions(new List<ITrack> { t1 });
-            bool check = myHappening.CheckEventConditions(new List<ITrack> { t1 });
-            Assert.AreEqual(true, check);
+            ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 100000), Direction.South);
+            myHappening.CheckEventConditions(new List<ITrack> {t1});
+            List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
+            Assert.True(check.Count > 0);
+        }
+
+        [Test]
+        public void DetectEvent_Handof_West_Valid()
+        {
+            var atc = Substitute.For<ATC>();
+            var myHappening = new EventAtDestination();
+            myHappening.AttachToAtc(ref atc);
+            ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(0, 50), Direction.West);
+            myHappening.CheckEventConditions(new List<ITrack> {t1});
+            List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
+            Assert.True(check.Count > 0);
+        }
+
+        [Test]
+        public void HookToDetector_Succes()
+        {
+            var myHappening = new EventAtDestination();
+            myHappening.HookToDetector();
+            Assert.True(EventHandler.EventList[EventHandler.EventList.Count - 1] is EventAtDestination);
         }
     } //end EventAtDestinationTest
 } //end namespace UnitTests

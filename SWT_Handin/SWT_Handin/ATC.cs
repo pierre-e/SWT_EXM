@@ -14,14 +14,14 @@ namespace SWT_Handin
 {
     public class ATC
     {
-        public ILog Log;
-        private IRenderer _renderer;
-        private List<ITrack> _tracks = new List<ITrack>();
         public readonly int AreaHeight;
         public readonly int AreaWidth;
-        private int TickTime;
-        public readonly int NearMissDist; 
         public readonly int CollisionDist;
+        public readonly int NearMissDist;
+        public ILog Log;
+        private int TickTime;
+        private IRenderer _renderer;
+        private List<ITrack> _tracks = new List<ITrack>();
 
         public ATC()
         {
@@ -31,6 +31,7 @@ namespace SWT_Handin
             AreaWidth = 100000;
             Log = new ConsolLog();
         }
+
         /// <param name="track"></param>
         public void AcceptIncomingTrack(ITrack track)
         {

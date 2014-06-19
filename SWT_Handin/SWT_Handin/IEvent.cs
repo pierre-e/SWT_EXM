@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SWT_Handin
 {
@@ -11,6 +6,6 @@ namespace SWT_Handin
     {
         void HookToDetector();
         void AttachToAtc(ref ATC airTrafficControl);
-        bool CheckEventConditions(List<ITrack> tracks);
+        List<EventMessage> CheckEventConditions(List<ITrack> tracks);
     }
 }

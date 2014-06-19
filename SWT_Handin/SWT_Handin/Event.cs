@@ -7,16 +7,13 @@
 ///////////////////////////////////////////////////////////
 
 
-using System;
 using System.Collections.Generic;
 
 namespace SWT_Handin
 {
     public abstract class Event
     {
-        
         /// <param name="tracks"></param>
         public abstract bool CheckEventCond(List<ITrack> tracks);
-
     }
 } //end Event

@@ -17,7 +17,7 @@ namespace SWT_Handin
         /// <param name="direction"></param>
         public ITrack CreateTrack(string tag, int speed, IPosition pos, Direction direction)
         {
-            return new TwoDTrack() {Tag = tag, Speed = speed, Position = pos,TrackDirection = direction};
+            return new TwoDTrack {Tag = tag, Speed = speed, Position = pos, TrackDirection = direction};
         }
     } //end TwoDTrackFactory
 } //end namespace Implementation

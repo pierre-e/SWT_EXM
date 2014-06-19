@@ -15,11 +15,13 @@ namespace SWT_Handin
     public class TwoDPosition : IPosition
     {
         private List<Double> _coordinates = new List<double>();
+
         public TwoDPosition(double x, double y)
         {
             _coordinates.Add(x);
             _coordinates.Add(y);
         }
+
         public List<Double> Coordinates
         {
             get { return _coordinates; }
@@ -30,6 +32,7 @@ namespace SWT_Handin
                     throw new Exception("This is a 2d track, must have 2 dimensions");
                 }
                 _coordinates = value;
-            } }
+            }
+        }
     } //end TwoDPosition
 } //end namespace Implementation

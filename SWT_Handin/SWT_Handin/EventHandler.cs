@@ -18,22 +18,23 @@ namespace SWT_Handin
     {
         public static List<IEvent> EventList = new List<IEvent>();
 
-        EventHandler(ref ATC atc)
+        private EventHandler(ref ATC atc)
         {
-            var instances = from t in Assembly.GetExecutingAssembly().GetTypes()
-                            where t.GetInterfaces().Contains(typeof(IEvent))
-                                     && t.GetConstructor(Type.EmptyTypes) != null
-                            select Activator.CreateInstance(t) as IEvent;
+            IEnumerable<IEvent> instances = from t in Assembly.GetExecutingAssembly().GetTypes()
+                where t.GetInterfaces().Contains(typeof (IEvent))
+                      && t.GetConstructor(Type.EmptyTypes) != null
+                select Activator.CreateInstance(t) as IEvent;
 
-            foreach (var instance in instances)
+            foreach (IEvent instance in instances)
             {
                 instance.HookToDetector();
                 instance.AttachToAtc(ref atc);
             }
         }
+
         public static void DetectEvents(List<ITrack> tracks)
         {
-            foreach (var evnt in EventList)
+            foreach (IEvent evnt in EventList)
             {
                 evnt.CheckEventConditions(tracks);
             }

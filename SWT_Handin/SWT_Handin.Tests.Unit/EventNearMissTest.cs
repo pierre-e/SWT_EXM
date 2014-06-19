@@ -10,25 +10,30 @@
 using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
-using SWT_Handin.EventHandling;
 
 namespace SWT_Handin.Tests.Unit
 {
     [TestFixture]
     public class EventNearMissTest
     {
-        
+        public void HookToDetector_Succes()
+        {
+            var myHappening = new EventAtDestination();
+            myHappening.HookToDetector();
+            Assert.True(EventHandler.EventList[EventHandler.EventList.Count - 1] is EventAtDestination);
+        }
+
         [Test]
         public void CheckEventCond_Valid()
         {
             var atc = Substitute.For<ATC>();
-            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 50), Direction.East);
-            var t2 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(2500, 50), Direction.East);
+            ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 50), Direction.East);
+            ITrack t2 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(2500, 50), Direction.East);
             var tracklist = new List<ITrack> {t1, t2};
             var myHappening = new EventNearMiss();
             myHappening.AttachToAtc(ref atc);
-            bool check = myHappening.CheckEventConditions(tracklist);
-            Assert.AreEqual(true, check);
+            List<EventMessage> check = myHappening.CheckEventConditions(tracklist);
+            Assert.True(check.Count > 0);
         }
     } //end EventNearMissTest
 } //end namespace UnitTests

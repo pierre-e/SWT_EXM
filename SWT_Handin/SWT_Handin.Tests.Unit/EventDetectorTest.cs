@@ -23,7 +23,7 @@ namespace SWT_Handin.Tests.Unit
         [Test]
         public void TestDetectEvents()
         {
-            List<ITrack> trackList = new List<ITrack>();
+            var trackList = new List<ITrack>();
             EventHandler.DetectEvents(trackList);
         }
     } //end EventDetectorTest

@@ -47,6 +47,7 @@
     <Compile Include="Event.cs" />
     <Compile Include="EventAtDestination.cs" />
     <Compile Include="EventHandler.cs" />
+    <Compile Include="EventMessage.cs" />
     <Compile Include="EventMidAirCol.cs" />
     <Compile Include="EventNearMiss.cs" />
     <Compile Include="FileRenderer.cs" />

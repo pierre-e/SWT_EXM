@@ -15,7 +15,5 @@ namespace SWT_Handin
         public int Speed { get; set; }
         public IPosition Position { get; set; }
         public Direction TrackDirection { get; set; }
-        
-        
     } //end TwoDTrack
 } //end namespace Implementation
