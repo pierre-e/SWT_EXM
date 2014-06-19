@@ -7,6 +7,8 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
+
 namespace SWT_Handin
 {
     public class TwoDTrack : ITrack
@@ -15,25 +17,23 @@ namespace SWT_Handin
         public int Speed { get; set; }
         public IPosition Position { get; set; }
         public Direction TrackDirection { get; set; }
-
+        private DateTime _lastUpdate = new DateTime();
         public void Tick(int tickTime)
         {
-            var currentPosition = Position;
-            var direction = TrackDirection;
-            var speed = Speed;
-            switch (direction)
+            double tomove = (Speed * (250 / (double)1000));
+            switch (TrackDirection)
             {
                 case Direction.North:
-                    Position.Coordinates[1] -= Speed;
+                    Position.Coordinates[1] -= tomove;
                     break;
                 case Direction.East:
-                    Position.Coordinates[0] += Speed;
+                    Position.Coordinates[0] += tomove;
                     break;
                 case Direction.South:
-                    Position.Coordinates[1] += Speed;
+                    Position.Coordinates[1] += tomove;
                     break;
                 case Direction.West:
-                    Position.Coordinates[0] -= Speed;
+                    Position.Coordinates[0] -= tomove;
                     break;
             }
         }
