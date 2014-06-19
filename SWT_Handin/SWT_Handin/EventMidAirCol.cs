@@ -32,7 +32,7 @@ namespace SWT_Handin.EventHandling
             throw new NotImplementedException();
         }
 
-        public void CheckEventConditions(List<ITrack> tracks)
+        public bool CheckEventConditions(List<ITrack> tracks)
         {
             throw new NotImplementedException();
         }

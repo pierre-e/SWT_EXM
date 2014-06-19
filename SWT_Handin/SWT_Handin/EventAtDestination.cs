@@ -22,7 +22,7 @@ namespace SWT_Handin
             _atc = airTrafficControl;
         }
 
-        public void CheckEventConditions(List<ITrack> tracks)
+        public bool CheckEventConditions(List<ITrack> tracks)
         {
             var affectedTracks = new List<ITrack>();
             foreach (var track in tracks)
@@ -45,7 +45,10 @@ namespace SWT_Handin
                     affectedTracks.Add(track);
                 }
             }
+            if (affectedTracks.Count == 0)
+                return false;
             HandleEvent(affectedTracks);
+            return true;
         }
 
         public void HookToDetector()

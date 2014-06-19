@@ -38,8 +38,5 @@ namespace SWT_Handin
                 evnt.CheckEventConditions(tracks);
             }
         }
-
-
-
     }
 } //end EventDetector

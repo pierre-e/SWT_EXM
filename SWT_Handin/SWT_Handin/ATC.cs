@@ -20,12 +20,15 @@ namespace SWT_Handin
         public readonly int AreaHeight;
         public readonly int AreaWidth;
         private int TickTime;
-        private int NearMissDist;
+        public readonly int NearMissDist; 
+        public readonly int CollisionDist;
 
         public ATC()
         {
-            AreaHeight = 100;
-            AreaWidth = 100;
+            CollisionDist = 100;
+            NearMissDist = 5000;
+            AreaHeight = 100000;
+            AreaWidth = 100000;
             Log = new ConsolLog();
         }
         /// <param name="track"></param>

@@ -11,6 +11,6 @@ namespace SWT_Handin
     {
         void HookToDetector();
         void AttachToAtc(ref ATC airTrafficControl);
-        void CheckEventConditions(List<ITrack> tracks);
+        bool CheckEventConditions(List<ITrack> tracks);
     }
 }
