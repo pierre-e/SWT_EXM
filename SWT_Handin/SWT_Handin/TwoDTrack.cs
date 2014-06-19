@@ -16,7 +16,7 @@ namespace SWT_Handin
         public IPosition Position { get; set; }
         public Direction TrackDirection { get; set; }
 
-        public void Tick()
+        public void Tick(int tickTime)
         {
             var currentPosition = Position;
             var direction = TrackDirection;

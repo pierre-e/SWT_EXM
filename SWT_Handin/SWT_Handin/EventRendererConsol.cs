@@ -18,7 +18,7 @@ namespace SWT_Handin
         {
             Console.WriteLine("EventType: " + message.EventType);
             Console.WriteLine("Date: {0:dd:MM:yyy}", message.Timestamp);
-            Console.WriteLine("Time: {0:hh:mm:ss:fff}", message.Timestamp);
+            Console.WriteLine("Time: {0:HH:mm:ss:fff}", message.Timestamp);
             Console.WriteLine("Involved Tracks:");
             foreach (var track in message.InvolvedTracks)
             {

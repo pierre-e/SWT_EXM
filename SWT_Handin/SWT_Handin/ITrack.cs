@@ -18,6 +18,6 @@ namespace SWT_Handin
         IPosition Position { get; set; }
         String Tag { get; set; }
 
-        void Tick();
+        void Tick(int tickTime);
     } //end ITrack
 } //end namespace Implementation

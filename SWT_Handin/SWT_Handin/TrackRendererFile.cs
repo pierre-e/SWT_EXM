@@ -38,7 +38,7 @@ namespace SWT_Handin
             {
                 foreach (var track in tracks)
                 {
-                    outfile.WriteLine("Time: {0:dd/MM/yyy hh:mm:ss.fff} ", date);
+                    outfile.WriteLine("Time: {0:dd/MM/yyy HH:mm:ss.fff} ", date);
                     outfile.WriteLine("Track: " + track.Tag);
                     String coordinates = "(";
                     foreach (var coord in track.Position.Coordinates)

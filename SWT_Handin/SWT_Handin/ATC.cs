@@ -22,6 +22,7 @@ namespace SWT_Handin
         private ITrackRenderer _trackRenderer;
         private IEventRenderer _eventRenderer;
         private Timer _timer;
+        private int _tickTime;
         public readonly List<ITrack> _tracks = new List<ITrack>();
         private EventHandler eventHandler;
 
@@ -31,6 +32,7 @@ namespace SWT_Handin
             NearMissDist = 5000;
             AreaHeight = 100000;
             AreaWidth = 100000;
+            _tickTime = 250;
             InitTimer(250);
             _trackRenderer = new TrackRendererFile("TrackRendition.txt");
             _eventRenderer = new EventRendererConsol();
@@ -48,11 +50,12 @@ namespace SWT_Handin
             _eventRenderer = eventRenderer;
             eventHandler = new EventHandler(this);
             InitTimer(tickTimer);
+            _tickTime = tickTimer;
         }
         private void InitTimer(int tickTime)
         {
             _timer = new Timer();
-            _timer.Elapsed += new ElapsedEventHandler(Tick);
+            _timer.Elapsed += Tick;
             _timer.Interval = tickTime; 
             _timer.Enabled = true;
             GC.KeepAlive(_timer);
@@ -73,9 +76,10 @@ namespace SWT_Handin
 
         public void Tick(object source, ElapsedEventArgs e)
         {
+            _timer.Enabled = false;
             foreach (var track in _tracks)
             {
-                track.Tick();
+                track.Tick(_tickTime);
             }
             var listOfEventList = eventHandler.DetectEvents(_tracks);
             foreach (var eventList in listOfEventList)
@@ -86,7 +90,9 @@ namespace SWT_Handin
                 }
             }
             _trackRenderer.RenderTracks(_tracks);
+            _timer.Enabled = true;
         }
+
 
     } //end ATC
 } //end namespace Implementation
