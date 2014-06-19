@@ -34,7 +34,6 @@ namespace SWT_Handin.Tests.Unit
             var myHappening = new EventAtDestination();
             myHappening.AttachToAtc(ref atc);
             ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 0), Direction.North);
-            myHappening.CheckEventConditions(new List<ITrack> {t1});
             List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
             Assert.True(check.Count > 0);
         }
@@ -46,7 +45,6 @@ namespace SWT_Handin.Tests.Unit
             var myHappening = new EventAtDestination();
             myHappening.AttachToAtc(ref atc);
             ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 100000), Direction.South);
-            myHappening.CheckEventConditions(new List<ITrack> {t1});
             List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
             Assert.True(check.Count > 0);
         }
@@ -58,7 +56,6 @@ namespace SWT_Handin.Tests.Unit
             var myHappening = new EventAtDestination();
             myHappening.AttachToAtc(ref atc);
             ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(0, 50), Direction.West);
-            myHappening.CheckEventConditions(new List<ITrack> {t1});
             List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
             Assert.True(check.Count > 0);
         }
