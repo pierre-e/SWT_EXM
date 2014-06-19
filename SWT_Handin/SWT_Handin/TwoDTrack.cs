@@ -17,10 +17,13 @@ namespace SWT_Handin
         public int Speed { get; set; }
         public IPosition Position { get; set; }
         public Direction TrackDirection { get; set; }
-        private DateTime _lastUpdate = new DateTime();
+        private DateTime _lastUpdate = DateTime.Now;
         public void Tick(int tickTime)
         {
-            double tomove = (Speed * (250 / (double)1000));
+            double timeSinceLastUpdate = (DateTime.Now - _lastUpdate).TotalMilliseconds;
+
+            _lastUpdate = DateTime.Now;
+            double tomove = (Speed * (tickTime / (double)1000)) + (Speed * ((timeSinceLastUpdate - tickTime) / 1000));
             switch (TrackDirection)
             {
                 case Direction.North:
