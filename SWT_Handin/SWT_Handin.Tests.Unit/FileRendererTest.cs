@@ -7,6 +7,10 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace SWT_Handin.Tests.Unit
@@ -14,19 +18,36 @@ namespace SWT_Handin.Tests.Unit
     [TestFixture]
     public class FileRendererTest
     {
-        [SetUp]
-        protected void SetUp()
+        [Test]
+        [ExpectedException(typeof(UnauthorizedAccessException))]
+        public void Filerenderer_Write_UnautherizedAccesError()
         {
+            var fp = @"RendedererAccesError.txt";
+            File.Create(fp);
+            File.SetAttributes(fp, FileAttributes.ReadOnly);
+            var filerenderer = new FileRenderer(fp);
+            var tl = Substitute.For < List<ITrack>>();
+            filerenderer.RenderTracks(tl);
         }
 
         [Test]
-        public void TestFileRenderer()
+        public void RenderTracks_RenderTracks_NoErrors()
         {
-        }
-
-        [Test]
-        public void TestRenderTracks()
-        {
+            var fp = "RendedererTest.txt";
+            /*if(File.Exists(fp))
+                File.Delete(fp);
+            using (FileStream fs = File.Create(fp))
+            {
+            }*/
+            var filerenderer = new FileRenderer(fp);
+            var tl = Substitute.For<List<ITrack>>();
+            var t1 = Substitute.For<TwoDTrack>();
+            var t2 = Substitute.For<TwoDTrack>();
+            t1.Position = Substitute.For<TwoDPosition>(0,0);
+            t2.Position = Substitute.For<TwoDPosition>(0, 0);
+            tl.Add(t1);
+            tl.Add(t2);
+            filerenderer.RenderTracks(tl);
         }
     } //end FileRendererTest
 } //end namespace UnitTests

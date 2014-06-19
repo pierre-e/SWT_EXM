@@ -9,6 +9,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using ATC.Implementation;
 
 namespace SWT_Handin
@@ -17,19 +19,41 @@ namespace SWT_Handin
     {
         private string _path;
 
-        public FileRenderer()
+        public FileRenderer(string fp)
         {
+            _path = fp;
+            if (!File.Exists(_path))
+            {
+                using (FileStream fs = File.Create(fp))
+                {
+                }
+            }
         }
 
-
-        /// <param name="fp"></param>
-        public FileRenderer(String fp)
-        {
-        }
 
         /// <param name="tracks"></param>
         public void RenderTracks(List<ITrack> tracks)
         {
+            var date = DateTime.Now;
+            using (var outfile = new StreamWriter(_path, true))
+            {
+                foreach (var track in tracks)
+                {
+                    outfile.WriteLine("Time: {0:dd/MM/yyy hh:mm:ss.fff} ", date);
+                    outfile.WriteLine("Track: " + track.Tag);
+                    String coordinates = "(";
+                    foreach (var coord in track.Position.Coordinates)
+                    {
+                        coordinates += coord +",";
+                    }
+                    coordinates = coordinates.Remove(coordinates.Length - 1);
+                    coordinates += ")";
+                    outfile.WriteLine("Coordinates: "+ coordinates);
+                    outfile.WriteLine("Direction:");
+                    outfile.WriteLine("speed: " + track.Speed);
+                    outfile.WriteLine("");
+                }
+            }
         }
     } //end FileRenderer
 } //end namespace Implementation
