@@ -44,7 +44,7 @@ namespace SWT_Handin.Tests.Unit
             var eventRendererSub = Substitute.For<IEventRenderer>();
             var trackSub1 = Substitute.For<ITrack>();
             var wasMoved = false;
-            trackSub1.When(x => x.Tick()).Do(x => wasMoved = true);
+            trackSub1.When(x => x.Tick(250)).Do(x => wasMoved = true);
             var atc = Substitute.For<ATC>(1000, 1000, 10, 50, trackRendererSub, eventRendererSub, 250);
             
 
