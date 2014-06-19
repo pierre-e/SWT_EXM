@@ -7,6 +7,10 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace SWT_Handin.Tests.Unit
@@ -14,19 +18,28 @@ namespace SWT_Handin.Tests.Unit
     [TestFixture]
     public class ConsolLogTest
     {
-        [SetUp]
-        protected void SetUp()
-        {
-        }
-
         [Test]
-        public void TestConsolLog()
+        public void Log_LogEvent_NoError()
         {
-        }
+            var subTrack1 = Substitute.For<ITrack>();
+            var subTrack2 = Substitute.For<ITrack>();
+            var trackList = new List<ITrack> { subTrack1, subTrack2 };
+            var subEvent = Substitute.For<IEvent>();
+            var subEventMessage = Substitute.For<EventMessage>(trackList, subEvent.GetType());
+            //subEventMessage.Timestamp.ReturnsForAnyArgs(date);
+            subTrack1.Tag.Returns("Track1");
+            subTrack2.Tag.Returns("Track2");
 
-        [Test]
-        public void TestLog()
-        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                var log = new ConsolLog();
+                log.Log(subEventMessage);
+
+                string expected = string.Format("EventType: Castle.Proxies.IEventProxy{0}Date: {1:dd:MM:yyy}{0}Time: {1:hh:mm:ss:fff}{0}Involved Tracks:{0}Track1{0}Track2{0}", Environment.NewLine, subEventMessage.Timestamp);
+                Assert.AreEqual(expected, sw.ToString());
+            }
+            
         }
     } //end ConsolLogTest
 } //end namespace UnitTests

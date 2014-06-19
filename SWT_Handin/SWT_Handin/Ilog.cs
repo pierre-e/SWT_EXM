@@ -15,8 +15,9 @@ namespace SWT_Handin
     {
         /// <param name="tracks"></param>
         /// <param name="message"></param>
-        void Log(List<ITrack> tracks, string message);
+        void Log(EventMessage message);
     }
 
 //end Ilog
+
 } //end namespace Implementation

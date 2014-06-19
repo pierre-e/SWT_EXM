@@ -44,7 +44,6 @@
     <Compile Include="ATC.cs" />
     <Compile Include="ConsolLog.cs" />
     <Compile Include="Direction.cs" />
-    <Compile Include="Event.cs" />
     <Compile Include="EventAtDestination.cs" />
     <Compile Include="EventHandler.cs" />
     <Compile Include="EventMessage.cs" />

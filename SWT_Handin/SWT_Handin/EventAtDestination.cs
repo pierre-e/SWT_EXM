@@ -58,7 +58,6 @@ namespace SWT_Handin
             foreach (EventMessage track in tracks)
             {
                 _atc.HandOff(track.InvolvedTracks[0]);
-                _atc.Log.Log(new List<ITrack> {track.InvolvedTracks[0]}, "Track at destination, handing off");
             }
         }
     }

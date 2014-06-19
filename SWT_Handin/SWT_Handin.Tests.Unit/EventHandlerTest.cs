@@ -8,23 +8,24 @@
 
 
 using System.Collections.Generic;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace SWT_Handin.Tests.Unit
 {
     [TestFixture]
-    public class EventDetectorTest
+    public class EventHandlerTest
     {
-        [SetUp]
-        protected void SetUp()
-        {
-        }
-
         [Test]
-        public void TestDetectEvents()
+        public void TestDetectEvents_Valid()
         {
-            var trackList = new List<ITrack>();
-            EventHandler.DetectEvents(trackList);
+            var atc = Substitute.For<ATC>();
+            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(100000, 50), Direction.East);
+            var tracklist = new List<ITrack> {t1};
+
+            var myHandle = new EventHandler(ref atc);
+            var events = myHandle.DetectEvents(tracklist);
+            Assert.True(events.Count > 0);
         }
     } //end EventDetectorTest
 } //end namespace UnitTests

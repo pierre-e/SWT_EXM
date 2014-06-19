@@ -18,7 +18,7 @@ namespace SWT_Handin
     {
         public static List<IEvent> EventList = new List<IEvent>();
 
-        private EventHandler(ref ATC atc)
+        public EventHandler(ref ATC atc)
         {
             IEnumerable<IEvent> instances = from t in Assembly.GetExecutingAssembly().GetTypes()
                 where t.GetInterfaces().Contains(typeof (IEvent))
@@ -32,12 +32,14 @@ namespace SWT_Handin
             }
         }
 
-        public static void DetectEvents(List<ITrack> tracks)
+        public List<List<EventMessage>> DetectEvents(List<ITrack> tracks)
         {
+            var eventList = new List<List<EventMessage>>();
             foreach (IEvent evnt in EventList)
             {
-                evnt.CheckEventConditions(tracks);
+                eventList.Add(evnt.CheckEventConditions(tracks));
             }
+            return eventList;
         }
     }
 } //end EventDetector

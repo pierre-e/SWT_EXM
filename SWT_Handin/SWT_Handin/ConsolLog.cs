@@ -7,17 +7,23 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
 using System.Collections.Generic;
 
 namespace SWT_Handin
 {
     public class ConsolLog : ILog
     {
-        /// <param name="tracks"></param>
-        /// <param name="message"></param>
-        /// <param name="event"></param>
-        public void Log(List<ITrack> tracks, string message)
+        public void Log(EventMessage message)
         {
+            Console.WriteLine("EventType: " + message.EventType);
+            Console.WriteLine("Date: {0:dd:MM:yyy}", message.Timestamp);
+            Console.WriteLine("Time: {0:hh:mm:ss:fff}", message.Timestamp);
+            Console.WriteLine("Involved Tracks:");
+            foreach (var track in message.InvolvedTracks)
+            {
+                Console.WriteLine(track.Tag);
+            }
         }
     } //end ConsolLog
 } //end namespace Implementation

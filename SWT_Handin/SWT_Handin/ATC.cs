@@ -21,7 +21,7 @@ namespace SWT_Handin
         public ILog Log;
         private int TickTime;
         private IRenderer _renderer;
-        private List<ITrack> _tracks = new List<ITrack>();
+        public readonly List<ITrack> _tracks = new List<ITrack>();
 
         public ATC()
         {

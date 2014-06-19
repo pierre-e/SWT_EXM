@@ -7,11 +7,13 @@ namespace SWT_Handin
     {
         public readonly Type EventType;
         public readonly List<ITrack> InvolvedTracks;
+        public readonly DateTime Timestamp;
 
         public EventMessage(List<ITrack> involvedTracks, Type eventType)
         {
             InvolvedTracks = involvedTracks;
             EventType = eventType;
+            this.Timestamp = DateTime.Now;
         }
     }
 }

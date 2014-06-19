@@ -46,7 +46,7 @@
     <Compile Include="ATCTest.cs" />
     <Compile Include="ConsolLogTest.cs" />
     <Compile Include="EventAtDestinationTest.cs" />
-    <Compile Include="EventDetectorTest.cs" />
+    <Compile Include="EventHandlerTest.cs" />
     <Compile Include="EventMidAirColTest.cs" />
     <Compile Include="EventNearMissTest.cs" />
     <Compile Include="FileRendererTest.cs" />
