@@ -14,8 +14,9 @@ namespace SWT_Handin
 {
     public interface ILog
     {
-        /// <param name="events"></param>
-        void Log(List<Tuple<ITrack, ITrack>> events);
+        /// <param name="tracks"></param>
+        /// <param name="message"></param>
+        void Log(List<ITrack> tracks, string message);
     }
 
 //end Ilog

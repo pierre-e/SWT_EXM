@@ -44,8 +44,13 @@
     <Compile Include="ATC.cs" />
     <Compile Include="ConsolLog.cs" />
     <Compile Include="Direction.cs" />
-    <Compile Include="EventDetector.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="EventAtDestination.cs" />
+    <Compile Include="EventHandler.cs" />
+    <Compile Include="EventMidAirCol.cs" />
+    <Compile Include="EventNearMiss.cs" />
     <Compile Include="FileRenderer.cs" />
+    <Compile Include="IEvent.cs" />
     <Compile Include="Ilog.cs" />
     <Compile Include="IPosition.cs" />
     <Compile Include="IRenderer.cs" />

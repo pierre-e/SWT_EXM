@@ -14,8 +14,10 @@ namespace SWT_Handin
 {
     public class ConsolLog : ILog
     {
+        /// <param name="tracks"></param>
+        /// <param name="message"></param>
         /// <param name="event"></param>
-        public void Log(List<Tuple<ITrack, ITrack>> events)
+        public void Log(List<ITrack> tracks, string message)
         {
         }
     } //end ConsolLog

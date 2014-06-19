@@ -7,6 +7,7 @@
 ///////////////////////////////////////////////////////////
 
 
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace SWT_Handin.Tests.Unit
@@ -22,6 +23,8 @@ namespace SWT_Handin.Tests.Unit
         [Test]
         public void TestDetectEvents()
         {
+            List<ITrack> trackList = new List<ITrack>();
+            EventHandler.DetectEvents(trackList);
         }
     } //end EventDetectorTest
 } //end namespace UnitTests

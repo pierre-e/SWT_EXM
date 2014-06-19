@@ -7,6 +7,11 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using NSubstitute;
+using NSubstitute.Exceptions;
 using NUnit.Framework;
 
 namespace SWT_Handin.Tests.Unit
@@ -14,14 +19,25 @@ namespace SWT_Handin.Tests.Unit
     [TestFixture]
     public class EventAtDestinationTest
     {
-        [SetUp]
-        protected void SetUp()
-        {
-        }
-
+       // private bool _wasSomethingDone = false;
         [Test]
-        public void TestCheckEventCond()
+        //[ExpectedException(typeof(ReceivedCallsException))]
+        public void DetectEvent_Handof_East()
         {
+            var atc = Substitute.For<ATC>();
+            //atc.When(x => x.HandOff(Arg.Any<ITrack>())).Do(x => DoSomething());
+            
+            var myHappening = new EventAtDestination();
+            myHappening.AttachToAtc(ref atc);
+            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(101, 2), Direction.East);
+            //var t2 = new TwoDTrackFactory().CreateTrack("Test", 1000, new TwoDPosition(101, 2), Direction.East);
+           
+            myHappening.CheckEventConditions(new List<ITrack>{t1});
+            atc.Received().HandOff(Arg.Any<ITrack>());
         }
+       /* private void DoSomething()
+        {
+            _wasSomethingDone = true;
+        }*/
     } //end EventAtDestinationTest
 } //end namespace UnitTests
