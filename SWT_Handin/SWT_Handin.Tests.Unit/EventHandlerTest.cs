@@ -24,7 +24,7 @@ namespace SWT_Handin.Tests.Unit
             var tracklist = new List<ITrack> {t1};
             EventHandler.EventList = new List<IEvent>();
 
-            var myHandle = new EventHandler(ref atc);
+            var myHandle = new EventHandler(atc);
             var events = myHandle.DetectEvents(tracklist);
             Assert.True(events.Count > 0);
         }

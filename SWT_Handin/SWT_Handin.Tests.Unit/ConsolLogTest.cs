@@ -33,7 +33,7 @@ namespace SWT_Handin.Tests.Unit
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                var log = new ConsolLog();
+                var log = new EventRendererConsol();
                 log.Log(subEventMessage);
 
                 string expected = string.Format("EventType: Castle.Proxies.IEventProxy{0}Date: {1:dd:MM:yyy}{0}Time: {1:hh:mm:ss:fff}{0}Involved Tracks:{0}Track1{0}Track2{0}", Environment.NewLine, subEventMessage.Timestamp);

@@ -15,5 +15,27 @@ namespace SWT_Handin
         public int Speed { get; set; }
         public IPosition Position { get; set; }
         public Direction TrackDirection { get; set; }
+
+        public void Tick()
+        {
+            var currentPosition = Position;
+            var direction = TrackDirection;
+            var speed = Speed;
+            switch (direction)
+            {
+                case Direction.North:
+                    Position.Coordinates[1] -= Speed;
+                    break;
+                case Direction.East:
+                    Position.Coordinates[0] += Speed;
+                    break;
+                case Direction.South:
+                    Position.Coordinates[1] += Speed;
+                    break;
+                case Direction.West:
+                    Position.Coordinates[0] -= Speed;
+                    break;
+            }
+        }
     } //end TwoDTrack
 } //end namespace Implementation

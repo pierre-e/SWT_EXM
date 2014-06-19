@@ -7,8 +7,9 @@
 ///////////////////////////////////////////////////////////
 
 
+using System;
 using System.Collections.Generic;
-using ATC.Implementation;
+using System.Timers;
 
 namespace SWT_Handin
 {
@@ -18,10 +19,11 @@ namespace SWT_Handin
         public readonly int AreaWidth;
         public readonly int CollisionDist;
         public readonly int NearMissDist;
-        public ILog Log;
-        private int TickTime;
-        private IRenderer _renderer;
+        private ITrackRenderer _trackRenderer;
+        private IEventRenderer _eventRenderer;
+        private Timer _timer;
         public readonly List<ITrack> _tracks = new List<ITrack>();
+        private EventHandler eventHandler;
 
         public ATC()
         {
@@ -29,21 +31,62 @@ namespace SWT_Handin
             NearMissDist = 5000;
             AreaHeight = 100000;
             AreaWidth = 100000;
-            Log = new ConsolLog();
+            InitTimer(250);
+            _trackRenderer = new TrackRendererFile("TrackRendition.txt");
+            _eventRenderer = new EventRendererConsol();
+            eventHandler = new EventHandler(this);
         }
+
+        public ATC(int areaHeight, int areaWidth, int collisionDist, int nearMissDist, ITrackRenderer trackRenderer,
+            IEventRenderer eventRenderer, int tickTimer)
+        {
+            AreaHeight = areaHeight;
+            AreaWidth = areaWidth;
+            CollisionDist = collisionDist;
+            NearMissDist = nearMissDist;
+            _trackRenderer = trackRenderer;
+            _eventRenderer = eventRenderer;
+            eventHandler = new EventHandler(this);
+            InitTimer(tickTimer);
+        }
+        private void InitTimer(int tickTime)
+        {
+            _timer = new Timer();
+            _timer.Elapsed += new ElapsedEventHandler(Tick);
+            _timer.Interval = tickTime; 
+            _timer.Enabled = true;
+            GC.KeepAlive(_timer);
+        }
+
 
         /// <param name="track"></param>
         public void AcceptIncomingTrack(ITrack track)
         {
+            _tracks.Add(track);
         }
 
         /// <param name="track"></param>
         public void HandOff(ITrack track)
         {
+            _tracks.Remove(track);
         }
 
-        public void Tick()
+        public void Tick(object source, ElapsedEventArgs e)
         {
+            foreach (var track in _tracks)
+            {
+                track.Tick();
+            }
+            var listOfEventList = eventHandler.DetectEvents(_tracks);
+            foreach (var eventList in listOfEventList)
+            {
+                foreach (var @event in eventList)
+                {
+                    _eventRenderer.Log(@event);
+                }
+            }
+            _trackRenderer.RenderTracks(_tracks);
         }
+
     } //end ATC
 } //end namespace Implementation

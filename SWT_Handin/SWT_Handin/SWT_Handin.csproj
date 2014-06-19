@@ -42,18 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ATC.cs" />
-    <Compile Include="ConsolLog.cs" />
+    <Compile Include="EventRendererConsol.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="EventAtDestination.cs" />
     <Compile Include="EventHandler.cs" />
     <Compile Include="EventMessage.cs" />
     <Compile Include="EventMidAirCol.cs" />
     <Compile Include="EventNearMiss.cs" />
-    <Compile Include="FileRenderer.cs" />
+    <Compile Include="TrackRendererFile.cs" />
     <Compile Include="IEvent.cs" />
-    <Compile Include="Ilog.cs" />
+    <Compile Include="IEventRenderer.cs" />
     <Compile Include="IPosition.cs" />
-    <Compile Include="IRenderer.cs" />
+    <Compile Include="ITrackRenderer.cs" />
     <Compile Include="ITrack.cs" />
     <Compile Include="ITrackFactor.cs" />
     <Compile Include="Program.cs" />

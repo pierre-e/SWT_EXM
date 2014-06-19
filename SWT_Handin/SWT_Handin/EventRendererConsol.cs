@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace SWT_Handin
 {
-    public class ConsolLog : ILog
+    public class EventRendererConsol : IEventRenderer
     {
         public void Log(EventMessage message)
         {

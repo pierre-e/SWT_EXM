@@ -21,9 +21,9 @@ namespace SWT_Handin.Tests.Unit
         {
             var atc = Substitute.For<ATC>();
             var myHappening = new EventAtDestination();
-            myHappening.AttachToAtc(ref atc);
+            myHappening.AttachToAtc(atc);
             ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(100000, 50), Direction.East);
-            List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
+            List<EventMessage> check = myHappening.CheckEventConditionsAndHandle(new List<ITrack> {t1});
             Assert.True(check.Count > 0);
         }
 
@@ -32,9 +32,9 @@ namespace SWT_Handin.Tests.Unit
         {
             var atc = Substitute.For<ATC>();
             var myHappening = new EventAtDestination();
-            myHappening.AttachToAtc(ref atc);
+            myHappening.AttachToAtc(atc);
             ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 0), Direction.North);
-            List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
+            List<EventMessage> check = myHappening.CheckEventConditionsAndHandle(new List<ITrack> {t1});
             Assert.True(check.Count > 0);
         }
 
@@ -43,9 +43,9 @@ namespace SWT_Handin.Tests.Unit
         {
             var atc = Substitute.For<ATC>();
             var myHappening = new EventAtDestination();
-            myHappening.AttachToAtc(ref atc);
+            myHappening.AttachToAtc(atc);
             ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 100000), Direction.South);
-            List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
+            List<EventMessage> check = myHappening.CheckEventConditionsAndHandle(new List<ITrack> {t1});
             Assert.True(check.Count > 0);
         }
 
@@ -54,9 +54,9 @@ namespace SWT_Handin.Tests.Unit
         {
             var atc = Substitute.For<ATC>();
             var myHappening = new EventAtDestination();
-            myHappening.AttachToAtc(ref atc);
+            myHappening.AttachToAtc(atc);
             ITrack t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(0, 50), Direction.West);
-            List<EventMessage> check = myHappening.CheckEventConditions(new List<ITrack> {t1});
+            List<EventMessage> check = myHappening.CheckEventConditionsAndHandle(new List<ITrack> {t1});
             Assert.True(check.Count > 0);
         }
 

@@ -22,12 +22,12 @@ namespace SWT_Handin
             EventHandler.EventList.Add(this);
         }
 
-        public void AttachToAtc(ref ATC airTrafficControl)
+        public void AttachToAtc(ATC airTrafficControl)
         {
             _atc = airTrafficControl;
         }
 
-        public List<EventMessage> CheckEventConditions(List<ITrack> tracks)
+        public List<EventMessage> CheckEventConditionsAndHandle(List<ITrack> tracks)
         {
             var midAirColisionList = new List<EventMessage>();
             foreach (ITrack track1 in tracks)

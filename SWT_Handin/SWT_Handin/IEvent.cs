@@ -5,7 +5,7 @@ namespace SWT_Handin
     public interface IEvent
     {
         void HookToDetector();
-        void AttachToAtc(ref ATC airTrafficControl);
-        List<EventMessage> CheckEventConditions(List<ITrack> tracks);
+        void AttachToAtc(ATC airTrafficControl);
+        List<EventMessage> CheckEventConditionsAndHandle(List<ITrack> tracks);
     }
 }

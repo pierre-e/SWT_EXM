@@ -31,8 +31,8 @@ namespace SWT_Handin.Tests.Unit
             ITrack t2 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(2500, 50), Direction.East);
             var tracklist = new List<ITrack> {t1, t2};
             var myHappening = new EventNearMiss();
-            myHappening.AttachToAtc(ref atc);
-            List<EventMessage> check = myHappening.CheckEventConditions(tracklist);
+            myHappening.AttachToAtc(atc);
+            List<EventMessage> check = myHappening.CheckEventConditionsAndHandle(tracklist);
             Assert.True(check.Count > 0);
         }
     } //end EventNearMissTest

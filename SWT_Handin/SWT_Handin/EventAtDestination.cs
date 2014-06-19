@@ -15,12 +15,12 @@ namespace SWT_Handin
     {
         private ATC _atc;
 
-        public void AttachToAtc(ref ATC airTrafficControl)
+        public void AttachToAtc(ATC airTrafficControl)
         {
             _atc = airTrafficControl;
         }
 
-        public List<EventMessage> CheckEventConditions(List<ITrack> tracks)
+        public List<EventMessage> CheckEventConditionsAndHandle(List<ITrack> tracks)
         {
             var affectedTracks = new List<EventMessage>();
             foreach (ITrack track in tracks)

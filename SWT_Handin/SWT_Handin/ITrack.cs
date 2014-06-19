@@ -17,5 +17,7 @@ namespace SWT_Handin
         int Speed { get; set; }
         IPosition Position { get; set; }
         String Tag { get; set; }
+
+        void Tick();
     } //end ITrack
 } //end namespace Implementation

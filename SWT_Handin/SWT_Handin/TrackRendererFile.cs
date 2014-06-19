@@ -11,15 +11,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ATC.Implementation;
 
 namespace SWT_Handin
 {
-    public class FileRenderer : IRenderer
+    public class TrackRendererFile : ITrackRenderer
     {
         private string _path;
 
-        public FileRenderer(string fp)
+        public TrackRendererFile(string fp)
         {
             _path = fp;
             if (!File.Exists(_path))

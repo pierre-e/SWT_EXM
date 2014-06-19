@@ -16,7 +16,7 @@ using NUnit.Framework;
 namespace SWT_Handin.Tests.Unit
 {
     [TestFixture]
-    public class FileRendererTest
+    public class TrackRendererFileTest
     {
         [Test]
         [ExpectedException(typeof(UnauthorizedAccessException))]
@@ -25,7 +25,7 @@ namespace SWT_Handin.Tests.Unit
             var fp = @"RendedererAccesError.txt";
             File.Create(fp);
             File.SetAttributes(fp, FileAttributes.ReadOnly);
-            var filerenderer = new FileRenderer(fp);
+            var filerenderer = new TrackRendererFile(fp);
             var tl = Substitute.For < List<ITrack>>();
             filerenderer.RenderTracks(tl);
         }
@@ -39,7 +39,7 @@ namespace SWT_Handin.Tests.Unit
             using (FileStream fs = File.Create(fp))
             {
             }*/
-            var filerenderer = new FileRenderer(fp);
+            var filerenderer = new TrackRendererFile(fp);
             var tl = Substitute.For<List<ITrack>>();
             var t1 = Substitute.For<TwoDTrack>();
             var t2 = Substitute.For<TwoDTrack>();

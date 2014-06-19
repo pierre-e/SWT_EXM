@@ -6,7 +6,11 @@
 //  Original author: Pierre
 ///////////////////////////////////////////////////////////
 
-
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Timers;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace SWT_Handin.Tests.Unit
@@ -14,29 +18,82 @@ namespace SWT_Handin.Tests.Unit
     [TestFixture]
     public class ATCTest
     {
-        [SetUp]
-        protected void SetUp()
-        {
-        }
-
         [Test]
         public void TestAcceptIncomingTrack()
         {
+            var atc = new ATC();
+            var trackSub = Substitute.For<ITrack>();
+            atc.AcceptIncomingTrack(trackSub);
+            Assert.AreEqual(atc._tracks.Count, 1);
         }
 
         [Test]
         public void TestHandOff()
         {
+            var atc = new ATC();
+            var trackSub = Substitute.For<ITrack>();
+            atc.AcceptIncomingTrack(trackSub);
+            atc.HandOff(trackSub);
+            Assert.AreEqual(atc._tracks.Count, 0);
         }
 
         [Test]
-        public void TestTick()
+        public void TestTick_TracksMovedCorrectly_Valid()
         {
+            var trackRendererSub = Substitute.For<ITrackRenderer>();
+            var eventRendererSub = Substitute.For<IEventRenderer>();
+            var trackSub1 = Substitute.For<ITrack>();
+            var wasMoved = false;
+            trackSub1.When(x => x.Tick()).Do(x => wasMoved = true);
+            var atc = Substitute.For<ATC>(1000, 1000, 10, 50, trackRendererSub, eventRendererSub, 250);
+            
+
+            atc.AcceptIncomingTrack(trackSub1);
+
+            Thread.Sleep(500);
+
+            Assert.True(wasMoved);
         }
 
         [Test]
-        public void testATC()
+        public void TestTick_EventsHandlerDetectsEvent_Valid()
         {
+            var trackRendererSub = Substitute.For<ITrackRenderer>();
+            var eventRendererSub = Substitute.For<IEventRenderer>();
+            var trackSub1 = Substitute.For<ITrack>();
+            var eventDetected = false;
+            var eventTrigger = Substitute.For<IEvent>();
+            eventTrigger.When(x => x.CheckEventConditionsAndHandle(Arg.Any<List<ITrack>>())).Do(x => eventDetected = true);
+
+            var atc = Substitute.For<ATC>(1000, 1000, 10, 50, trackRendererSub, eventRendererSub, 250);
+            EventHandler.EventList = new List<IEvent>{eventTrigger};
+
+            atc.AcceptIncomingTrack(trackSub1);
+            Thread.Sleep(500);
+
+            Assert.True(eventDetected);
+        }
+        [Test]
+        public void TestTick_EventsHandlerRendersEvents_Valid()
+        {
+            var trackRendererSub = Substitute.For<ITrackRenderer>();
+            var eventRendererSub = Substitute.For<IEventRenderer>();
+            var eventRendered = false;
+            var eventMessageList = Substitute.For<List<EventMessage>>();
+            var trackListSub = Substitute.For<List<ITrack>>();
+            var eventTrigger = Substitute.For<IEvent>();
+            var eventMessage = Substitute.For<EventMessage>(trackListSub,eventTrigger.GetType());
+            eventMessageList.Add(eventMessage);
+
+            eventTrigger.CheckEventConditionsAndHandle(Arg.Any<List<ITrack>>()).Returns(eventMessageList);
+            var atc = Substitute.For<ATC>(1000, 1000, 10, 50, trackRendererSub, eventRendererSub, 250);
+            EventHandler.EventList = new List<IEvent> { eventTrigger };
+
+            eventRendererSub.When(x => x.Log(Arg.Any<EventMessage>())).Do(x => eventRendered = true);
+
+            Thread.Sleep(500);
+
+            Assert.True(eventRendered);
         }
     } //end ATCTest
 } //end namespace UnitTests
