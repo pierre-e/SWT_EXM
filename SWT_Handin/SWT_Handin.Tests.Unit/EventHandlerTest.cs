@@ -22,6 +22,7 @@ namespace SWT_Handin.Tests.Unit
             var atc = Substitute.For<ATC>();
             var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(100000, 50), Direction.East);
             var tracklist = new List<ITrack> {t1};
+            EventHandler.EventList = new List<IEvent>();
 
             var myHandle = new EventHandler(ref atc);
             var events = myHandle.DetectEvents(tracklist);
