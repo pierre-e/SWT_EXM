@@ -31,6 +31,16 @@ namespace SWT_Handin.Tests.Unit
         }
 
         [Test]
+        public void FileRenderer_FileDoesntExist_CreateFile_True()
+        {
+            var fp = @"RendedererFileDoesntExist.txt";
+            if(File.Exists(fp))
+                File.Delete(fp);
+            var filerenderer = new TrackRendererFile(fp);
+            var tl = Substitute.For<List<ITrack>>();
+            Assert.True(File.Exists(fp));
+        }
+        [Test]
         public void RenderTracks_RenderTracks_NoErrors()
         {
             var fp = "RendedererTest.txt";

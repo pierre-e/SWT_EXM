@@ -44,12 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ATCTest.cs" />
-    <Compile Include="ConsolLogTest.cs" />
+    <Compile Include="EventRendererConsolTest.cs" />
     <Compile Include="EventAtDestinationTest.cs" />
     <Compile Include="EventHandlerTest.cs" />
     <Compile Include="EventMidAirColTest.cs" />
     <Compile Include="EventNearMissTest.cs" />
-    <Compile Include="FileRendererTest.cs" />
+    <Compile Include="TrackRendererFileTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwoDPositionTest.cs" />
     <Compile Include="TwoDTrackFactoryTest.cs" />

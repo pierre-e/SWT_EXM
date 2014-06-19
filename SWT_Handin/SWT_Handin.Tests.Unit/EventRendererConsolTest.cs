@@ -16,7 +16,7 @@ using NUnit.Framework;
 namespace SWT_Handin.Tests.Unit
 {
     [TestFixture]
-    public class ConsolLogTest
+    public class EventRendererConsolTest
     {
         [Test]
         public void Log_LogEvent_NoError()
