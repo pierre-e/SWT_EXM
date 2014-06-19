@@ -19,25 +19,40 @@ namespace SWT_Handin.Tests.Unit
     [TestFixture]
     public class EventAtDestinationTest
     {
-       // private bool _wasSomethingDone = false;
         [Test]
-        //[ExpectedException(typeof(ReceivedCallsException))]
         public void DetectEvent_Handof_East()
         {
-            var atc = Substitute.For<ATC>();
-            //atc.When(x => x.HandOff(Arg.Any<ITrack>())).Do(x => DoSomething());
-            
-            var myHappening = new EventAtDestination();
+            var atc = Substitute.For<ATC>();            var myHappening = new EventAtDestination();
             myHappening.AttachToAtc(ref atc);
-            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(101, 2), Direction.East);
-            //var t2 = new TwoDTrackFactory().CreateTrack("Test", 1000, new TwoDPosition(101, 2), Direction.East);
-           
+            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(101, 50), Direction.East);
             myHappening.CheckEventConditions(new List<ITrack>{t1});
             atc.Received().HandOff(Arg.Any<ITrack>());
         }
-       /* private void DoSomething()
+
+        public void DetectEvent_Handof_West()
         {
-            _wasSomethingDone = true;
-        }*/
+            var atc = Substitute.For<ATC>(); var myHappening = new EventAtDestination();
+            myHappening.AttachToAtc(ref atc);
+            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(0, 50), Direction.West);
+            myHappening.CheckEventConditions(new List<ITrack> { t1 });
+            atc.Received().HandOff(Arg.Any<ITrack>());
+        }
+
+        public void DetectEvent_Handof_North()
+        {
+            var atc = Substitute.For<ATC>(); var myHappening = new EventAtDestination();
+            myHappening.AttachToAtc(ref atc);
+            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 0), Direction.East);
+            myHappening.CheckEventConditions(new List<ITrack> { t1 });
+            atc.Received().HandOff(Arg.Any<ITrack>());
+        }
+        public void DetectEvent_Handof_South()
+        {
+            var atc = Substitute.For<ATC>(); var myHappening = new EventAtDestination();
+            myHappening.AttachToAtc(ref atc);
+            var t1 = new TwoDTrackFactory().CreateTrack("Test", 80, new TwoDPosition(50, 100), Direction.East);
+            myHappening.CheckEventConditions(new List<ITrack> { t1 });
+            atc.Received().HandOff(Arg.Any<ITrack>());
+        }
     } //end EventAtDestinationTest
 } //end namespace UnitTests
