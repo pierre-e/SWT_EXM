@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using System.Timers;
+using System.Xml;
 
 namespace SWT_Handin
 {
@@ -93,6 +94,83 @@ namespace SWT_Handin
             _timer.Enabled = true;
         }
 
+        public ATC(string filename)
+    {
+        var xDoc = new XmlDocument();
+        // try
+       // {
+            xDoc.Load(filename);
+
+      //  }
+        //   catch (notfo)
+    //    {
+            
+    //    }
+
+        var element = xDoc.DocumentElement;
+
+        var xpos = element.GetElementsByTagName("gridsizeX").Item(0);
+        var ypos = element.GetElementsByTagName("gridsizeY").Item(0);
+        var update = element.GetElementsByTagName("updateFrequency").Item(0);
+        var nmRadius = element.GetElementsByTagName("nearMissRadius").Item(0);
+        var atDistination = element.GetElementsByTagName("AtDistinationRadius").Item(0);
+
+        if (xpos != null) AreaWidth = int.Parse(xpos.InnerText);
+        if (ypos != null) AreaHeight = int.Parse(ypos.InnerText);
+        if (update != null) _tickTime = int.Parse(update.InnerText);
+        if (nmRadius != null) NearMissDist = int.Parse(nmRadius.InnerText);
+        if (atDistination != null) CollisionDist = int.Parse(atDistination.InnerText);
+
+        var render = element.GetElementsByTagName("rendererType").Item(0);
+        string renderer;
+
+        if (render== null)
+        {
+            renderer = "Console";
+        }
+        else
+        {
+            renderer = render.InnerText;
+        }
+        
+        switch (renderer)
+        {
+            case "Console":
+                _eventRenderer = new EventRendererConsol();
+                break;
+            case "File":
+                //_eventRenderer = new Renderer(new EventRendererFile("render.txt"));
+                break;
+            default:
+                _eventRenderer = new EventRendererConsol();
+                break;
+        }
+
+
+        var consoleType = element.GetElementsByTagName("loggerType").Item(0);
+        string consoleTypeJa;
+
+        if (consoleType == null)
+        {
+            consoleTypeJa = "Console";
+        }
+        else
+        {
+            consoleTypeJa = consoleType.InnerText;
+        }
+
+        switch (consoleTypeJa)
+        {
+            case "Console":
+                //_log = new ConsolLog();
+                break;
+            case "File":
+                _trackRenderer = new TrackRendererFile("log.txt");
+                break;
+            default:
+               // _log = new ConsolLog();
+                break;
+        }
 
     } //end ATC
 } //end namespace Implementation
