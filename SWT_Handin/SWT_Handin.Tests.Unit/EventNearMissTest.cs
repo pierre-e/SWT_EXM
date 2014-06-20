@@ -20,6 +20,8 @@ namespace SWT_Handin.Tests.Unit
         public void HookToDetector_Succes()
         {
             var myHappening = new EventAtDestination();
+            var eventSub = Substitute.For<EventHandler>();
+            EventHandler.EventList = new List<IEvent>();
             myHappening.HookToDetector();
             Assert.True(EventHandler.EventList[EventHandler.EventList.Count - 1] is EventAtDestination);
         }
